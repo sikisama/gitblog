@@ -11,20 +11,23 @@ summary: javascript语言精粹读书笔记
 - javascript中，对象是可变的键控集合（keyed collection）。对象是属性的容器，其中每个属性都拥有名字和值。属性的名字可以是包含字符串在内的任意字符。属性值可以是除undefined值外的任何值。
 - javascript 包含一个原型链的特性，允许对象继承另外一个对象的属性。
 - 一个对象的字面量就是包围在一对花括号中的零或多个【键值对】。
+
+ '||' 会取第一个为true的,'&&'会尝试取到最后一个为true的（遇到false停止）
+ 可以用 '||' 来填充默认值 
 ```
 var person = {'name':'zxf','age':24};
-
-/*|| 会取第一个为true的,&&会尝试取到最后一个为true的（遇到false停止）*/
-//可以用 || 来填充默认值 
 var status = person.status || "unknown";
 //尝试从undefined的成员属性中取值会导致 TypeError异常，可以通过&&运算符来避免错误
 var gril_name = person.girl && person.girl.name;
 ```
+
 - 对象通过引用传递，**永远不会被复制**  
+
 ```
 var a = b = c = {};
 ```
 - 反射机制
+
 ```
 typeof person.name 
 //检测对象是独有该属性，不检查原型链
@@ -47,11 +50,13 @@ person.hasOwnProperty('name');
 - 调用一个函数会暂停当前函数的执行，传递控制权和参数给新函数。除了申明是定义的形参，每个函数还接受两个附加的参数：this和arguments。
 
 **调用运算符** 是跟在任何一个函数表达式之后的一对圆括号
+
 ```
 var that = this;
 ```
 
 - 基本类型扩充 
+
 ```
 Function.prototype.method = function(name,func){
     if(!this.prototype[name]){
@@ -80,7 +85,6 @@ javascript 并不支持块级作用域，只有函数作用域。意味着定义
  允许我们把参数与传递给它的参数结合，产生一个新的函数
 
 ```
-
 function add(){var sum = 0; for(i=0;i<arguments.length;i++){sum += arguments[i];} return sum;}
 
 Function.method('curry',function(){
@@ -107,6 +111,7 @@ var add1 = add.curry(1);
 document.writeln(add1(6));
 
 ```
+
 ### 记忆
 
 函数可以将先前操作的结果记录在某个对象里，从而避免重复的运算。
@@ -134,6 +139,7 @@ var fibonacci = memoizer([0,1],function(recur,n){
 ```
 
 ### 继承
+
 
 > 继承提供了两个有用的服务。首先是代码重用的一种形式。另外一个好处是引入了一套类型系统的规范，程序员无需编写显示类型转换的代码。
 
@@ -187,6 +193,7 @@ myCat.get_name();
 
 //会从原型链上找方法
 ```
+
 ### 原型
 
 > 基于原型的继承：一个对象可以继承一个旧对象的属性
@@ -242,6 +249,7 @@ var constructor = function(spec,my){
 };
 
 ```
+
 ```
 var mammal = function(spec){
     var that = {};

@@ -2,8 +2,8 @@
 author: zhangxuefeng
 date: 2016-08-16
 title: PHP非阻塞模式
-tags: 阻塞模式,php
-category:php
+tags: 阻塞模式,PHP
+category:PHP
 status: publish
 summary: PHP非阻塞模式
 -->
